@@ -3,7 +3,7 @@ require('dotenv').config()
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
-  defaultNetwork: "baseGoerli",
+  defaultNetwork: "blastSepolia",
   networks: {
     localhost: {
         url: "http://127.0.0.1:8545",
@@ -29,17 +29,26 @@ module.exports = {
         chainId: 1,
         accounts: [process.env.ETH_ACC,]
       },
-      baseGoerli: {
-        url: "https://powerful-methodical-uranium.base-goerli.discover.quiknode.pro/a7be3c5b9e1234c06a8d4b0b866fc8c9ca6a154f/",
-        chainId: 84531,
-        gasPrice: 2000000000,
+      blastSepolia: {
+        url: "https://sepolia.blast.io",
+        chainId: 168587773,
         accounts: [process.env.BSC_ACC,]
-    },
+      }
   },
   etherscan: {
     // Your API key for Etherscan
     // Obtain one at https://bscscan.com/
-    apiKey: process.env.ETHERSCAN_API
+    apiKey: process.env.ETHERSCAN_API,
+    customChains: [
+      {
+        network: "blastSepolia",
+        chainId: 168587773,
+        urls: {
+          apiURL: "https://api.routescan.io/v2/network/testnet/evm/168587773/etherscan",
+          browserURL: "https://testnet.blastscan.io"
+        }
+      }
+    ]
   },
   solidity: {
     version: "0.8.20",

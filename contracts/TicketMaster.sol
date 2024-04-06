@@ -13,6 +13,7 @@ contract TicketMaster {
 
     mapping(address => uint256) public _tickets;
     mapping(address => bool) public _blacklist;
+    mapping(address => uint256) public _lastNonces;
 
     event TicketPurchased(address indexed buyer, uint256 amount);
     event TicketSold(address indexed seller, uint256 amount);
@@ -56,7 +57,7 @@ contract TicketMaster {
     function sellTicket(uint256 _tokensAmount) external openTrade notBlacklisted returns (bool) {
         require(_tickets[msg.sender] >= _tokensAmount, 'Insufficient ticket balance');
 
-        uint256 amountInUSDC = (_tokensAmount / _ticketSellRate) * 1e18; // 1e18 is used for precision
+        uint256 amountInUSDC = (_tokensAmount * 1e18) / _ticketSellRate;
         require(_usdc.transfer(msg.sender, amountInUSDC), "Transfer of USDC failed");
 
         _tickets[msg.sender] -= _tokensAmount;
