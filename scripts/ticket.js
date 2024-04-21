@@ -6,7 +6,7 @@ async function main() {
   const buyRate = web3.utils.toWei("17.23");
   const sellRate = web3.utils.toWei("17.454");
 
-  const contract = await hre.ethers.deployContract("TicketMaster", ["0x43B341FBAE05D3Bfa351362d11783347E184050d", buyRate, sellRate]);
+  const contract = await hre.ethers.deployContract("TicketMaster", ["0xC0BAF894E53cFc3c6D8EbbFDe1165754bb035909", buyRate, sellRate]);
   await contract.waitForDeployment();
 
   await hre.run("verify:verify", {

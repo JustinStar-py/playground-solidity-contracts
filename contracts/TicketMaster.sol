@@ -94,7 +94,7 @@ contract TicketMaster {
         _pause = true;
     }
 
-    function unauseTrade() public onlyOwner {
+    function resumeTrade() public onlyOwner {
         _pause = false;
     }
 }

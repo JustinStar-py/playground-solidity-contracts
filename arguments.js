@@ -5,7 +5,7 @@ const sellRate = web3.utils.toWei("17.454");
 
 
 module.exports = [   
-     "0x43B341FBAE05D3Bfa351362d11783347E184050d"
+     "0xC0BAF894E53cFc3c6D8EbbFDe1165754bb035909"
     ,buyRate
     ,sellRate
 ]

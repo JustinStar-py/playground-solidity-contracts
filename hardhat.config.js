@@ -5,7 +5,7 @@ require('dotenv').config()
 module.exports = {
   defaultNetwork: "blastSepolia",
   networks: {
-    localhost: {
+      localhost: {
         url: "http://127.0.0.1:8545",
         accounts: [process.env.LOCALHOST_ACC,]
       },
@@ -33,6 +33,11 @@ module.exports = {
         url: "https://sepolia.blast.io",
         chainId: 168587773,
         accounts: [process.env.BSC_ACC,]
+      },
+      degen: {
+        url: "https://rpc.degen.tips",
+        chainId: 666666666,
+        accounts: [process.env.BSC_ACC,]
       }
   },
   etherscan: {
@@ -46,6 +51,14 @@ module.exports = {
         urls: {
           apiURL: "https://api.routescan.io/v2/network/testnet/evm/168587773/etherscan",
           browserURL: "https://testnet.blastscan.io"
+        }
+      },
+      {
+        network: "degen",
+        chainId: 666666666,
+        urls: {
+          apiURL: "https://explorer.degen.tips/api",
+          browserURL: "https://explorer.degen.tips"
         }
       }
     ]
